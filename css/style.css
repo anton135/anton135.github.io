@@ -1,0 +1,27 @@
+.yellow
+{
+    background: yellow;
+}
+.blue
+{
+    background: blue;
+}
+.red
+{
+    background: red;
+}
+.gg
+{
+    background: purple;
+    font-size: 5rem;
+}
+.car
+{
+    height: 50%;
+    width: 40%;
+    background-color: aqua;
+    border-width: 2px;
+    border-color: black;
+    border-style: solid;
+    text-align: center;
+}

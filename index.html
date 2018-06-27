@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Test</title>
+        <link rel="stylesheet" href="css/style.css">
+        <script src="https://www.gstatic.com/firebasejs/5.1.0/firebase.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">  
+    </head>
+    <body>
+        <section id="app">
+            <article>
+            <p @mouseover="changeText();">Text</p>
+            <p>{{message}}</p>
+            <p :class="styleCSS">Цвет: {{styleCSS}}</p>
+            <input type="text" @input="styleCSS = $event.target.value">
+        </article>
+        <article>
+            <input type="text" @input="increment($event.target.value)">
+            <p>{{value}}</p>
+            <p>{{doubleValue}}</p>
+        </article>
+        <article>
+            <button @click="show = !show">Скрыть</button>
+                <p v-if="show">Test hiding</p>
+                <p v-else>{{showMess|lowerCase|capitalize}}</p>
+                <ul>
+                    <li v-for="(car,i) in cars">{{i+1}}.{{car.model}} скорость {{car.speed}}</li>
+                </ul>
+            </article>
+            <app-car></app-car>
+            <form>
+                    <label for="email">Email:<input type="email" id="email" placeholder="name@sss.com" v-model="user.email"></label>
+                    <label for="password">Password:<input type="password" id="password" v-model="user.password"></label>
+                    <label for="passwordConfirm">Password confirm:<input type="password" id="passwordConfirm" v-model="user.passwordConfirm"></label>
+                    <button type="submit" @click.prevent="registerUser">Register</button>
+                </form>
+                {{minStartTime}}
+                {{maxEndTime}}
+    {{getTimeInterval("16:30","15:45")}}
+    
+    <form>
+        <input placeholder="name" v-model="newGroup.name">
+        <input placeholder="Pn" v-model="newGroup.day">
+        <input placeholder="20:00" v-model="newGroup.timeStart">
+        <input placeholder="22:00" v-model="newGroup.timeEnd">
+        <button type="submit" @click.prevent="addGroup">Add</button>
+    </form>
+    <!--{{newGroup.day}}{{newGroup.name}}{{newGroup.timeStart}}
+    <ul>
+        <li v-for="time in times">{{time}}</li>
+    </ul>
+    <ul>
+        <li v-for="group in groups">{{group.day}} {{group.name}} {{group.timeStart}} {{group.timeEnd}}</li>
+    </ul>
+    <ul>
+        <li v-for="group in groupsOriginal">{{group.day}} {{group.name}} {{group.timeStart}} {{group.timeEnd}} {{getRowspan(group)}}</li>
+    </ul>-->
+                <table class="table table-bordered table-striped table-sm">
+                    <thead class="thead-light">
+                      <tr>
+                        <th class="col-md-2">Пн</th>
+                        <th class="col-md-2">Вт</th>
+                        <th class="col-md-2">Ср</th>
+                        <th class="col-md-2">Чт</th>
+                        <th class="col-md-2">Пт</th>
+                        <th class="col-md-2">Сб</th>
+                      </tr>
+                      
+                    </thead>
+                    <tbody>
+                        <tr v-for="time in times">
+                            <td :rowspan="getRowspan(getGroupByDayAndTime(day,time))"  v-for="day in days" v-if="getGroupByDayAndTime(day,time).name!='continue'">{{getGroupByDayAndTime(day,time).name}}<br>{{getGroupByDayAndTime(day,time).timeStart}}</td>
+                        </tr>
+                    </tbody>
+                  </table>
+        
+        </section>
+     
+        <section id="app2">
+                <hr>
+                <app-car></app-car>
+        </section>
+        <script src="js/main.js"></script>
+    </body>
+</html>
