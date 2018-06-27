@@ -61,7 +61,10 @@ new Vue ({
         ],
         /*times:["15:00", "16:00","17:00","18:00","19:00","20:00","21:00"],*/
         days:["Pn","Vt","Sr","Cht","Pt","Sb"],
-        newGroup:{day:"",name:"",timeStart:"",timeEnd:""}
+        newGroup:{day:"",name:"",timeStart:"",timeEnd:""},
+        teachers:[
+            {surname:"Крамарь",name:"Ольга",fatherName:"Юрьевна", about:"Судья Высшей категории. Тренер по европейской программе у старшей и средней групп",telNumber:"+38 050 535 3480",facebookURL:"https://www.facebook.com/dance.champion",photoURL:"https://dance-olymp.pp.ua/avatars/olya.png"}
+        ]
     },
     methods:{
         changeText (){
