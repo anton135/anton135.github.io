@@ -77,7 +77,10 @@
                         </tr>
                     </tbody>
                   </table>
-                  <section class="col-sm-6" v-for="teacher in teachers">
+                
+                  
+                  <section class="row" v-for="row in teachersRows">
+                  <section :class="'col-sm-'+12/row.teachers.length" v-for="teacher in row.teachers">
                     <article class="card">
                         <section class="card-body">
                             <img class="card-img-top rounded-circle" width="200px" :src="teacher.photoURL" alt="Olga Kramar's photo">
@@ -90,6 +93,7 @@
                             </section>
                           </article>
                     </section>
+                </section>
         </section>
      
         <section id="app2">

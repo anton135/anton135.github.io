@@ -63,7 +63,11 @@ new Vue ({
         days:["Pn","Vt","Sr","Cht","Pt","Sb"],
         newGroup:{day:"",name:"",timeStart:"",timeEnd:""},
         teachers:[
-            {surname:"Крамарь",name:"Ольга",fatherName:"Юрьевна", about:"Судья Высшей категории. Тренер по европейской программе у старшей и средней групп",telNumber:"+38 050 535 3480",facebookURL:"https://www.facebook.com/dance.champion",photoURL:"https://dance-olymp.pp.ua/avatars/olya.png"}
+            {surname:"Крамарь",name:"Ольга",fatherName:"Юрьевна", about:"Судья Высшей категории. Тренер по европейской программе у старшей и средней групп",telNumber:"+38 050 535 3480",facebookURL:"https://www.facebook.com/dance.champion",photoURL:"https://dance-olymp.pp.ua/avatars/olya.png",row:"1"},
+            {surname:"Крамарь",name:"Ольга",fatherName:"Юрьевна", about:"Судья Высшей категории. Тренер по европейской программе у старшей и средней групп",telNumber:"+38 050 535 3480",facebookURL:"https://www.facebook.com/dance.champion",photoURL:"https://dance-olymp.pp.ua/avatars/olya.png",row:"1"},
+            {surname:"Крамарь",name:"Ольга",fatherName:"Юрьевна", about:"Судья Высшей категории. Тренер по европейской программе у старшей и средней групп",telNumber:"+38 050 535 3480",facebookURL:"https://www.facebook.com/dance.champion",photoURL:"https://dance-olymp.pp.ua/avatars/olya.png",row:"2"},
+            {surname:"Зуева",name:"Алина",fatherName:"Сергеевна", about:"Тренер по латино-американской и европейской программе у младшей группы",telNumber:"+38 095 479 1280",facebookURL:"https://www.facebook.com/profile.php?id=100010772323315",photoURL:"https://dance-olymp.pp.ua/avatars/alina.png",row:"2"},
+            {surname:"Крамарь",name:"Ольга",fatherName:"Юрьевна", about:"Судья Высшей категории. Тренер по европейской программе у старшей и средней групп",telNumber:"+38 050 535 3480",facebookURL:"https://www.facebook.com/dance.champion",photoURL:"https://dance-olymp.pp.ua/avatars/olya.png",row:"2"}
         ]
     },
     methods:{
@@ -136,10 +140,36 @@ new Vue ({
         addGroup(){
             this.groupsOriginal.push({day:this.newGroup.day,name:this.newGroup.name,timeStart:this.newGroup.timeStart,timeEnd:this.newGroup.timeEnd});
         }
-        
     },
     computed:
     {
+        teachersRows(){
+            var max=1;
+            var rows=[];
+            for (i=0;i<this.teachers.length;i++)
+            {
+                if(this.teachers[i].row>max)
+                {
+                    max=this.teachers[i].row;
+                }
+            }
+            for(i=1;i<=max;i++)
+            {
+                
+                var teachersInRow=[];
+            for(j=0;j<this.teachers.length;j++)
+                {
+                   
+                    if(this.teachers[j].row==i){
+                        teachersInRow.push(this.teachers[j]);
+                    
+                }
+                }
+                rows.push({row:i,teachers:teachersInRow});
+            }
+            
+            return rows;
+        },
         groups()
         {
             var groupsContinued=[];
